@@ -98,7 +98,9 @@ python manage.py runserver
 ### API endpoints
 - List all providers
 
-```GET /api/provider/```
+```
+GET /api/provider/
+```
 
 - Create a provider
 
@@ -115,7 +117,9 @@ currency: <id>
 
 - Read a provider
 
-```GET /api/provider/<id>```
+```
+GET /api/provider/<id>
+```
 
 - Update a provider
 
@@ -132,7 +136,9 @@ currency: <id>
 
 - List all service areas
 
-```GET /api/servicearea/```
+```
+GET /api/servicearea/
+```
 
 - Create a service area
 
@@ -150,7 +156,9 @@ Geojson example:
 
 - Read a service area
 
-```GET /api/servicearea/<id>```
+```
+GET /api/servicearea/<id>
+```
 
 - Update a service area
 
