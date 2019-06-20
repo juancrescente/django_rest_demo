@@ -165,7 +165,13 @@ GET /api/servicearea/<id>
 ```
 PUT /api/servicearea/<id>
 
-Same data as create
+provider: <id>
+price: <decimal>
+poly: geojson
+
+Geojson example:
+{"type": "Polygon", "coordinates": [[[3.55, 51.08], [4.36, 50.73], [4.84, 50.85], [4.45, 51.3], [3.55, 51.08]]]}
+
 ```
 
 - Query a service area within a point
