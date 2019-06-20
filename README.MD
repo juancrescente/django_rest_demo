@@ -114,7 +114,7 @@ GET /api/provider/
 - Create a provider
 
 ```
-PUT  /api/provider/
+PUT /api/provider/
 
 name: <string>
 email: <string>
@@ -152,7 +152,7 @@ GET /api/servicearea/
 - Create a service area
 
 ```
-PUT  /api/servicearea/
+PUT /api/servicearea/
 
 provider: <id>
 price: <decimal>
