@@ -6,9 +6,18 @@
 - Deployed to a EC2 Ubuntu instance
 - Nginx and gunicorn
 
+### Quick testing data
 
+Login to the admin via
+
+```
 http://18.223.211.9/admin/login/?next=/admin/
+```
 
+Make a query with a point in Mexico via
+```
+http://18.223.211.9/api/query/?lat=21.215892&lng=-99.379898
+```
 
 ### Implemented models
 - Provider
@@ -40,7 +49,8 @@ http://18.223.211.9/admin/login/?next=/admin/
     
 ### Development
 
-To install this demo project you can use
+To install this demo project you can use the following snippet
+
 ```
 #make sure to install gdal as indicated here https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html
 #also spatialite extension
@@ -88,7 +98,16 @@ python manage.py runserver
 
 - Create a provider
 
-```PUT  /api/provider/```
+```
+PUT  /api/provider/
+
+name: <string>
+email: <string>
+phoneNumber: <string>
+language: <id>
+currency: <id>
+
+```
 
 - Read a provider
 
@@ -96,7 +115,16 @@ python manage.py runserver
 
 - Update a provider
 
-```PUT /api/provider/<id>```
+```
+PUT /api/provider/<id>
+
+name: <string>
+email: <string>
+phoneNumber: <string>
+language: <id>
+currency: <id>
+
+```
 
 - List all service areas
 
@@ -107,9 +135,12 @@ python manage.py runserver
 ```
 PUT  /api/servicearea/
 
-provider: 1
-price: 10
-poly: {"type": "Polygon", "coordinates": [[[3.55, 51.08], [4.36, 50.73], [4.84, 50.85], [4.45, 51.3], [3.55, 51.08]]]}
+provider: <id>
+price: <decimal>
+poly: geojson
+
+Geojson example:
+{"type": "Polygon", "coordinates": [[[3.55, 51.08], [4.36, 50.73], [4.84, 50.85], [4.45, 51.3], [3.55, 51.08]]]}
 
 ```
 
@@ -119,12 +150,19 @@ poly: {"type": "Polygon", "coordinates": [[[3.55, 51.08], [4.36, 50.73], [4.84, 
 
 - Update a service area
 
-```PUT /api/servicearea/<id>```
-
-- Query
-
 ```
 PUT /api/servicearea/<id>
+
+Same data as create
+```
+
+- Query a service area within a point
+
+```
+GET /api/servicearea/<id>
+
+lat: <geographical coordinate>
+lng: <geographical coordinate>
 
 ```
 
