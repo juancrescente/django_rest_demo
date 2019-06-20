@@ -15,12 +15,12 @@
 Login to the admin via
 
 ```
-http://18.223.211.9/admin/login/?next=/admin/
+<URL>/admin/login/?next=/admin/
 ```
 
 Make a query with a point in Mexico via
 ```
-http://18.223.211.9/api/query/?lat=21.215892&lng=-99.379898
+<URL>/api/query/?lat=21.215892&lng=-99.379898
 ```
 
 ### Implemented models
