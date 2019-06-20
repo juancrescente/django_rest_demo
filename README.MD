@@ -5,7 +5,7 @@
 
 ### Considerations:
 - Used djangorestframework and djangorestframework-gis
-- Implemented token auth, you can try it but I've disabled it in endpoints so you can easily navigate through it using restframework html views
+- Implemented token auth, you can use it but I've disabled auth validation in endpoints so you can easily navigate through it using restframework html views
 - I used sqlite with spatialite engine although in a production environment I'd rather use postgres
 - Deployed to a EC2 Ubuntu instance
 - Nginx and gunicorn
