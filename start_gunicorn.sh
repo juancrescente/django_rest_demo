@@ -6,7 +6,7 @@ ERRORFILE=$APPFIR'log/gunicorn-error.log'
 
 NUM_WORKERS=3
 
-ADDRESS=127.0.0.1:8000
+ADDRESS=unix:/home/ubuntu/$APPNAME/$APPNAME.sock
 
 cd $APPDIR
 
