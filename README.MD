@@ -1,3 +1,11 @@
+
+### Considerations:
+- used djangorestframework and djangorestframework-gis
+- Implemented token auth, you can try it but disabled it in endpoints so you can easily navigate through it using restframework html views
+- I used sqlite with spatialite engine although in a production environment I'd rather use postgres
+- Deployed to a EC2 Ubuntu instance
+
+
 ### Implemented models
 - Provider
     - Name
@@ -29,6 +37,7 @@
 
 To install this demo project you can use
 ```
+#make sure to install gdal as indicated here https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html
 #Clone the repo
 git clone https://github.com/juancrescente/django_rest_demo.git
 #Enter project directory
@@ -43,13 +52,26 @@ pip3 install -r requirements.txt
 python manage.py migrate
 #Create a super user
 python manage.py createsuperuser
+#get an auth token
+python manage.py drf_create_token <username>
 #Run a dev server
 python manage.py runserver
 ```
     
 ### Test with httpie
 ```
-    http http://127.0.0.1:8000/api/servicearea/
+    #Get an auth token
+    http POST http://127.0.0.1:8000/api/auth/ username=<username> password=<password>
+    #List all providers (notice that token is not required)
+    http GET http://127.0.0.1:8000/api/provider/ 'Authorization: Token <token>'
+    #List all services areas
+    http GET http://127.0.0.1:8000/api/servicearea/
+    #Create a provider
+    http POST http://127.0.0.1:8000/api/provider/ name='demo name' email='hello@howareyou.com' phoneNumber='1321123' language=1 currency=2
+    #Create a service area
+    http POST http://127.0.0.1:8000/api/servicearea/ name='demo service' price=200 provider=1 phoneNumber='1321123' language=1 currency=2 poly='{"type": "Polygon","coordinates": [[[-72.33412579243583,-21.07450362996167],[-44.34136159020936,-20.63271391303683],[-36.61531304055972,-41.41654561190464],[-55.49920843998351,-56.1038533898914],[-78.22224175875544,-56.22451767007005],[-80.16393518872619,-34.35538338021033],[-72.33412579243583,-21.07450362996167]]]}'
+    #Query service area within given points
+    http GET "http://127.0.0.1:8000/api/query/?lat=-34.208752&lng=-58.577201"
 ```
 
 ### API endpoints
@@ -98,3 +120,4 @@ poly: {"type": "Polygon", "coordinates": [[[3.55, 51.08], [4.36, 50.73], [4.84, 
 PUT /api/servicearea/<id>
 
 ```
+
