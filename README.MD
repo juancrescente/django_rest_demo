@@ -102,11 +102,6 @@ python manage.py runserver
 ```
 sudo npm install -g loadtest
 loadtest -n 100 -k  http://localhost:8000/api/query/\?lat\=21.215892\&lng\=-99.379898
-#without cache
-Mean latency:        8.2 ms
-#with cache
-Mean latency:        2.8 ms
-
 ```
 
 ### API endpoints
