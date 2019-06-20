@@ -1,7 +1,7 @@
 
 ### Considerations:
 - Used djangorestframework and djangorestframework-gis
-- Implemented token auth, you can try it but disabled it in endpoints so you can easily navigate through it using restframework html views
+- Implemented token auth, you can try it but I've disabled it in endpoints so you can easily navigate through it using restframework html views
 - I used sqlite with spatialite engine although in a production environment I'd rather use postgres
 - Deployed to a EC2 Ubuntu instance
 - Nginx and gunicorn
@@ -35,7 +35,8 @@ http://18.223.211.9/admin/login/?next=/admin/
     - User can create _providers_
     - User can query _providers_
     - User can create _services areas_ on behalf of providers
-    - User can query _services areas_ with a single point
+    - User can query all _services areas_
+    - User can query _services areas_ within a geographical point
     
 ### Development
 
