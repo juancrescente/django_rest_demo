@@ -9,7 +9,7 @@
 - I used sqlite with spatialite engine although in a production environment I'd rather use postgres
 - Deployed to a EC2 Ubuntu instance
 - Nginx and gunicorn
--Redis for querying cache 
+- Redis for querying cache 
 
 ### Quick testing data
 
