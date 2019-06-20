@@ -186,7 +186,7 @@ Geojson example:
 - Query a service area within a point
 
 ```
-GET /api/servicearea/<id>
+GET api/query/?lat=<lat>&lng=<lng>
 
 lat: <geographical coordinate>
 lng: <geographical coordinate>
