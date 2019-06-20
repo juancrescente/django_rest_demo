@@ -4,6 +4,8 @@ venv/
 
 log/
 
+django_rest_demo.sock
+
 ### OSX ###
 .DS_Store
 .AppleDouble

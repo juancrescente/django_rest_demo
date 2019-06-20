@@ -6,6 +6,9 @@
 - Deployed to a EC2 Ubuntu instance
 
 
+http://18.223.211.9:8000/admin/login/?next=/admin/
+
+
 ### Implemented models
 - Provider
     - Name
@@ -38,6 +41,8 @@
 To install this demo project you can use
 ```
 #make sure to install gdal as indicated here https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html
+#also spatialite extension
+sudo apt-get install libsqlite3-mod-spatialite
 #Clone the repo
 git clone https://github.com/juancrescente/django_rest_demo.git
 #Enter project directory
@@ -52,7 +57,7 @@ pip3 install -r requirements.txt
 python manage.py migrate
 #Create a super user
 python manage.py createsuperuser
-#get an auth token
+#(optional) get an auth token
 python manage.py drf_create_token <username>
 #Run a dev server
 python manage.py runserver
