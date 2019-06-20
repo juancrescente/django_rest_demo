@@ -53,9 +53,9 @@ class ServiceAreaQuery(generics.ListAPIView):
             res = {"code": 400, "message": "lng parameter is not valid"}
             return Response(data=json.dumps(res), status=status.HTTP_400_BAD_REQUEST)
         key = "%s_%s" % (lat, lng)
- #       if key in cache:
-#            serialized = cache.get(key)
-#            return Response(serialized)
+        if key in cache:
+            serialized = cache.get(key)
+            return Response(serialized)
         point = Point(float(lng), float(lat))
         items = ServiceArea.objects.filter(poly__intersects=point)
         serializer = ServiceAreaSerializer(items, many=True)
