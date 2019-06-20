@@ -9,6 +9,7 @@
 - I used sqlite with spatialite engine although in a production environment I'd rather use postgres
 - Deployed to a EC2 Ubuntu instance
 - Nginx and gunicorn
+-Redis for querying cache 
 
 ### Quick testing data
 
@@ -59,6 +60,8 @@ To install this demo project you can use the following snippet
 #make sure to install gdal as indicated here https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html
 #also spatialite extension
 sudo apt-get install libsqlite3-mod-spatialite
+#and redis
+sudo apt install redis-server
 #Clone the repo
 git clone https://github.com/juancrescente/django_rest_demo.git
 #Enter project directory
@@ -93,6 +96,17 @@ python manage.py runserver
     http POST http://127.0.0.1:8000/api/servicearea/ name='demo service' price=200 provider=1 phoneNumber='1321123' language=1 currency=2 poly='{"type": "Polygon","coordinates": [[[-72.33412579243583,-21.07450362996167],[-44.34136159020936,-20.63271391303683],[-36.61531304055972,-41.41654561190464],[-55.49920843998351,-56.1038533898914],[-78.22224175875544,-56.22451767007005],[-80.16393518872619,-34.35538338021033],[-72.33412579243583,-21.07450362996167]]]}'
     #Query service area within given points
     http GET "http://127.0.0.1:8000/api/query/?lat=-34.208752&lng=-58.577201"
+```
+
+### Cache testing
+```
+sudo npm install -g loadtest
+loadtest -n 100 -k  http://localhost:8000/api/query/\?lat\=21.215892\&lng\=-99.379898
+#without cache
+Mean latency:        8.2 ms
+#with cache
+Mean latency:        2.8 ms
+
 ```
 
 ### API endpoints
