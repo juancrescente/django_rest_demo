@@ -1,4 +1,4 @@
-Django==2.2.2
+Django==2.2.13
 djangorestframework==3.9.4
 djangorestframework-gis==0.14
 django-redis==4.10.0
